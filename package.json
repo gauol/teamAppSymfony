@@ -1,0 +1,38 @@
+{
+  "name": "teamm-symfony",
+  "version": "1.0.0",
+  "description": "teamM =====",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "ajv": "^6.1.1",
+    "bootstrap": "^4.0.0",
+    "jquery": "^1.12.4",
+    "node-sass": "^4.7.2",
+    "node-sass-loader": "^0.1.7",
+    "popper.js": "^1.12.9",
+    "sass-loader": "^6.0.6",
+    "webpack-notifier": "^1.5.1"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.19.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "encoreProd": "./node_modules/.bin/encore production",
+    "encoreDev": "./node_modules/.bin/encore dev",
+    "encoreWatch": "./node_modules/.bin/encore dev --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/pgalczyk/teamM-symfony.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/pgalczyk/teamM-symfony/issues"
+  },
+  "homepage": "https://gitlab.com/pgalczyk/teamM-symfony#README"
+}
