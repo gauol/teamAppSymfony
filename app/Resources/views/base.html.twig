@@ -4,11 +4,15 @@
         <meta charset="UTF-8" />
         <title>{% block title %}teamM{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('build/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('build/floatingLabels.css') }}">
+
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    <div class="container text-center">
         {% block body %}{% endblock %}
+    </div>
         {% block javascripts %}{% endblock %}
         <script src="{{ asset('build/script.js') }}"></script>
     </body>

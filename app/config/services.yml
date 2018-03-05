@@ -33,3 +33,7 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    app.form.registration_form_type:
+        class: AppBundle\Form\RegistrationFormType
+        tags:
+            - { name: form.type, alias: AppBundle\Form\RegistrationFormType }
