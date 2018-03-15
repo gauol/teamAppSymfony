@@ -1,44 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}teamM{% endblock %}</title>
-        <link rel="stylesheet" href="{{ asset('build/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/floatingLabels.css') }}">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}teamM{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('build/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/floatingLabels.css') }}">
 
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">Home</a>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light p-0">
+    <a class="navbar-brand" href="/"><img class="img-fluid m-1" src="{{ asset('img/logo.png') }}" style="max-width: 40px"> <strong class="ml-3">Foxter TeamApp</strong> </a>
 
-            <div class="navbar-brand">
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                    <a href="{{ path('fos_user_security_logout') }}" class="btn btn-primary btn-sm">
-                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                    </a>
-                {% else %}
-                    <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary btn-sm">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                {% endif %}
-            </div>
-        </nav>
-        {% if app.request.hasPreviousSession %}
-            {% for type, messages in app.session.flashBag.all %}
-                {% for message in messages %}
-                    <div class="{{ type }}">
-                        {{ message|trans({}, 'FOSUserBundle') }}
-                    </div>
-                {% endfor %}
-            {% endfor %}
+    <div class="navbar-brand col">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <a href="/profile">{{ app.user.username }}
+            {% if is_granted("ROLE_ADMIN") %}
+                <span>(Admin)</span>
+            {% elseif is_granted("ROLE_MANAGER") %}
+                <span>(Kierownik)</span>
+            {% endif %}
+            </a>
+            <a href="{{ path('fos_user_security_logout') }}" class="btn btn-primary btn-sm float-right">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}"
+               class="btn btn-primary btn-sm float-right">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
         {% endif %}
-        <div class="container text-center mt-5">
-            {% block body %}{% endblock %}
-        </div>
+    </div>
+</nav>
+{% if app.request.hasPreviousSession %}
+    {% for type, messages in app.session.flashBag.all %}
+        {% for message in messages %}
+            <div class="{{ type }}">
+                {{ message|trans({}, 'FOSUserBundle') }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+<article>
+    {% block body %}{% endblock %}
+</article>
 
-        <script src="{{ asset('build/script.js') }}"></script>
-        {% block javascripts %}{% endblock %}
+<script src="{{ asset('build/script.js') }}"></script>
+{% block javascripts %}{% endblock %}
 
-    </body>
+</body>
 </html>

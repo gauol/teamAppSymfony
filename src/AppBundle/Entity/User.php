@@ -31,6 +31,11 @@ class User extends BaseUser
      */
     protected $lastname;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Application", mappedBy="User")
+     */
+    private $applications;
+
     public function __construct()
     {
         parent::__construct();
@@ -67,5 +72,39 @@ class User extends BaseUser
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
+    }
+
+    /**
+     * Add application
+     *
+     * @param \AppBundle\Entity\Application $application
+     *
+     * @return User
+     */
+    public function addApplication(\AppBundle\Entity\Application $application)
+    {
+        $this->applications[] = $application;
+
+        return $this;
+    }
+
+    /**
+     * Remove application
+     *
+     * @param \AppBundle\Entity\Application $application
+     */
+    public function removeApplication(\AppBundle\Entity\Application $application)
+    {
+        $this->applications->removeElement($application);
+    }
+
+    /**
+     * Get applications
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getApplications()
+    {
+        return $this->applications;
     }
 }

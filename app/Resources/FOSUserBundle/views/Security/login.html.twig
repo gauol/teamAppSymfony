@@ -3,6 +3,12 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
+    <div class="row">
+    <div class="col-12 col-md-4">
+        <a class="btn btn-danger btn-block mb-2" href="/register">Zarejestruj się</a>
+        <a class="btn btn-danger btn-block " href="/resetting/request">Przypomnij hasło</a>
+    </div>
+    <div class="col-12 col-md-8">
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -29,4 +35,6 @@
                name="_submit"
                value="{{ 'security.login.submit'|trans }}"/>
     </form>
+    </div>
+    </div>
 {% endblock fos_user_content %}
