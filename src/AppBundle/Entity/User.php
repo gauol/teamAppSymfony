@@ -32,7 +32,7 @@ class User extends BaseUser
     protected $lastname;
 
     /**
-     * @ORM\OneToMany(targetEntity="Application", mappedBy="User")
+     * @ORM\OneToMany(targetEntity="Application", mappedBy="user")
      */
     private $applications;
 

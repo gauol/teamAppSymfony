@@ -1,1 +1,15 @@
 @import "~bootstrap/scss/bootstrap";
+
+@media (min-width: 768px){
+  .sidebar {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 20px;
+    margin-bottom: 0;
+    position: fixed;
+    a{
+      color: white;
+      margin: 0 3px 5px 3px;
+    }
+  }
+}

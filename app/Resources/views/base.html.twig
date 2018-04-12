@@ -10,37 +10,50 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light p-0">
-    <a class="navbar-brand" href="/"><img class="img-fluid m-1" src="{{ asset('img/logo.png') }}" style="max-width: 40px"> <strong class="ml-3">Foxter TeamApp</strong> </a>
+<nav class="navbar navbar-expand-md sticky-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><img class="img-fluid m-1" src="{{ asset('img/logo.png') }}" style="max-width: 40px"> <strong class="ml-3">Foxter TeamApp</strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div class="navbar-brand col">
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <a href="/profile">{{ app.user.username }}
-            {% if is_granted("ROLE_ADMIN") %}
-                <span>(Admin)</span>
-            {% elseif is_granted("ROLE_MANAGER") %}
-                <span>(Kierownik)</span>
+    <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ml-auto">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li class="nav-item">
+                    <a href="/profile" class="nav-link">{{ app.user.username }}
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <span>(Admin)</span>
+                        {% elseif is_granted("ROLE_MANAGER") %}
+                            <span>(Kierownik)</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('panelindex') }}" class="nav-link">Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('fos_user_security_logout') }}" class="nav-link">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a href="{{ path('fos_user_security_login') }}"
+                        class="nav-link">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                </li>
             {% endif %}
-            </a>
-            <a href="{{ path('fos_user_security_logout') }}" class="btn btn-primary btn-sm float-right">
-                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-            </a>
-        {% else %}
-            <a href="{{ path('fos_user_security_login') }}"
-               class="btn btn-primary btn-sm float-right">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-        {% endif %}
+        </ul>
     </div>
 </nav>
-{% if app.request.hasPreviousSession %}
-    {% for type, messages in app.session.flashBag.all %}
-        {% for message in messages %}
-            <div class="{{ type }}">
-                {{ message|trans({}, 'FOSUserBundle') }}
-            </div>
+<article id="main">
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashBag.all %}
+            {% for message in messages %}
+                <div class="{{ type }}">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
-{% endif %}
-<article>
+    {% endif %}
     {% block body %}{% endblock %}
 </article>
 
