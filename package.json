@@ -9,11 +9,13 @@
   "dependencies": {
     "ajv": "^6.1.1",
     "bootstrap": "^4.0.0",
+    "codemirror": "^5.36.0",
     "jquery": "^1.12.4",
     "node-sass": "^4.7.2",
     "node-sass-loader": "^0.1.7",
     "popper.js": "^1.12.9",
     "sass-loader": "^6.0.6",
+    "summernote": "^0.8.10",
     "webpack-notifier": "^1.5.1"
   },
   "devDependencies": {

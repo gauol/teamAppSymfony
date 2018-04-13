@@ -1,0 +1,16 @@
+{% extends ':Panel:panel.html.twig' %}
+{% block panelBlock %}
+    <h1>Lista eventów:</h1>
+    {% for event in events %}
+        <div class="card my-2 event">
+            <div class="card-header">
+                <a href="{{ path('panelEventDetails',{event: event.getId()}) }}" class="link">
+                    <strong>{{ event.getName() }} : {{ event.getDate()|date("d/m/Y") }} ({{ event.getStart()|date("H:i") }} - {{ event.getEnd()|date("H:i") }}) - {{ event.getAddress() }}</strong>
+                </a>
+            </div>
+            <div class="card-body">
+                {{ event.getDescription()|raw }}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

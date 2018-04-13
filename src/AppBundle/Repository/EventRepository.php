@@ -10,4 +10,13 @@ namespace AppBundle\Repository;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getUpcoming(){
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('e')
+            ->from('AppBundle:Event', 'e')
+            ->where('e.date >= :now')
+            ->setParameters(array('now' => new \DateTime()));
+
+        return $qb->getQuery()->getResult();
+    }
 }

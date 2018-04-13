@@ -4,6 +4,15 @@
 
 {% block fos_user_content %}
     <div class="row">
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashBag.all %}
+                {% for message in messages %}
+                    <div class="{{ type }}">
+                        {{ message|trans({}, 'FOSUserBundle') }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
     <div class="col-12 col-md-4">
         <a class="btn btn-danger btn-block mb-2" href="/register">Zarejestruj się</a>
         <a class="btn btn-danger btn-block mb-2" href="/resetting/request">Przypomnij hasło</a>

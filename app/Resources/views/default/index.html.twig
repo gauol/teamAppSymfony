@@ -8,7 +8,7 @@
                     {{ event.getName() }}
                 </div>
                 <div class="card-body">
-                    <p class="card-text">{{ event.getDescription() }}</p>
+                    <p class="card-text">{{ event.getDescription() |raw}}</p>
                     <a href="/events/confirm/{{ event.getId() }}" class="btn btn-primary">Potwierdź przybycie!</a>
                 </div>
             </div>

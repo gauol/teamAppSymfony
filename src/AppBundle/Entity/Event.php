@@ -31,16 +31,23 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_start", type="datetime")
+     * @ORM\Column(name="date", type="date")
      */
-    private $dateStart;
+    private $date;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_end", type="datetime")
+     * @ORM\Column(name="start", type="time")
      */
-    private $dateEnd;
+    private $start;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end", type="time")
+     */
+    private $end;
 
     /**
      * @ORM\Column(type="string")
@@ -67,38 +74,6 @@ class Event
     public function setAddress($address)
     {
         $this->address = $address;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getDateEnd()
-    {
-        return $this->dateEnd;
-    }
-
-    /**
-     * @param \DateTime $dateEnd
-     */
-    public function setDateEnd($dateEnd)
-    {
-        $this->dateEnd = $dateEnd;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getDateStart()
-    {
-        return $this->dateStart;
-    }
-
-    /**
-     * @param \DateTime $dateStart
-     */
-    public function setDateStart($dateStart)
-    {
-        $this->dateStart = $dateStart;
     }
 
     /**
@@ -157,5 +132,77 @@ class Event
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Event
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set start
+     *
+     * @param \DateTime $start
+     *
+     * @return Event
+     */
+    public function setStart($start)
+    {
+        $this->start = $start;
+
+        return $this;
+    }
+
+    /**
+     * Get start
+     *
+     * @return \DateTime
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    /**
+     * Set end
+     *
+     * @param \DateTime $end
+     *
+     * @return Event
+     */
+    public function setEnd($end)
+    {
+        $this->end = $end;
+
+        return $this;
+    }
+
+    /**
+     * Get end
+     *
+     * @return \DateTime
+     */
+    public function getEnd()
+    {
+        return $this->end;
     }
 }
