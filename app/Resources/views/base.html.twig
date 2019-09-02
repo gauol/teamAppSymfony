@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}teamM{% endblock %}</title>
+    <title>{% block title %}FoxterTeamApp{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('build/style.css') }}">
     <link rel="stylesheet" href="{{ asset('build/floatingLabels.css') }}">
 
@@ -10,7 +10,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
-<nav class="navbar navbar-expand-md sticky-top navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ path('homepage') }}"><img class="img-fluid m-1" src="{{ asset('img/logo.png') }}" style="max-width: 40px"> <strong class="ml-3">Foxter TeamApp</strong> </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,9 +28,11 @@
                         {% endif %}
                     </a>
                 </li>
+            {% if is_granted("ROLE_MANAGER") %}
                 <li class="nav-item">
                     <a href="{{ path('panelindex') }}" class="nav-link">Panel</a>
                 </li>
+            {% endif %}
                 <li class="nav-item">
                     <a href="{{ path('fos_user_security_logout') }}" class="nav-link">
                         {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
@@ -44,7 +46,7 @@
         </ul>
     </div>
 </nav>
-<article id="main" class="container-fluid mt-1">
+<article id="main" class="container-fluid mt-5 pt-3">
     {% block body %}{% endblock %}
 </article>
 

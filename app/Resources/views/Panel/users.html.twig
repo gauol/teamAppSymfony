@@ -1,0 +1,16 @@
+{% extends ':Panel:panel.html.twig' %}
+{% block panelBlock %}
+    <h1>Lista pracowników:</h1>
+    {% for user in users %}
+        <div class="card my-2 event">
+            <div class="card-header">
+                <a href="{{ path('panelUserDetails',{user: user.getId()}) }}" class="link">
+                    <strong>{{ user.getLastname() }} {{ user.getFirstname() }}</strong>
+                </a>
+            </div>
+            <div class="card-body">
+                {#{{ event.getDescription()|raw }}#}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

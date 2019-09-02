@@ -32,6 +32,11 @@ class User extends BaseUser
     protected $lastname;
 
     /**
+     * @ORM\Column(type="text")
+     */
+    protected $description;
+
+    /**
      * @ORM\OneToMany(targetEntity="Application", mappedBy="user")
      */
     private $applications;

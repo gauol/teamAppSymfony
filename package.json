@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "ajv": "^6.1.1",
+    "angular": "^1.6.9",
     "bootstrap": "^4.0.0",
     "codemirror": "^5.36.0",
     "jquery": "^1.12.4",

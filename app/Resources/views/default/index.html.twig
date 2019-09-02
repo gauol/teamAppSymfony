@@ -3,7 +3,7 @@
 {% block body %}
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         {% for event in events %}
-            <div class="card">
+            <div class="card mt-2">
                 <div class="card-header">
                     {{ event.getName() }}
                 </div>
