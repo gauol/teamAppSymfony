@@ -11,7 +11,7 @@
     "angular": "^1.6.9",
     "bootstrap": "^4.0.0",
     "codemirror": "^5.36.0",
-    "jquery": "^1.12.4",
+    "jquery": "^3.4.1",
     "node-sass": "^4.7.2",
     "node-sass-loader": "^0.1.7",
     "popper.js": "^1.12.9",
